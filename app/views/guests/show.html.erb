@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @guest.name %>
+</p>
+
+<p>
+  <strong>Api token:</strong>
+  <%= @guest.api_token %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @guest.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @guest.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @guest.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @guest.postal_code %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @guest.email %>
+</p>
+
+<%= link_to 'Edit', edit_guest_path(@guest) %> |
+<%= link_to 'Back', guests_path %>
