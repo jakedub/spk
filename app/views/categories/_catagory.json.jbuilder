@@ -1,2 +1,2 @@
-json.extract! catagory, :id, :catagory_name, :created_at, :updated_at
-json.url catagory_url(catagory, format: :json)
+json.extract! category, :id, :category_name, :created_at, :updated_at
+json.url category_url(category, format: :json)
