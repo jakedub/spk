@@ -1,1 +1,1 @@
-json.partial! "catagories/catagory", catagory: @catagory
+json.partial! "categories/category", category: @category
