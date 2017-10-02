@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   resources :carts
   resources :guests
   resources :users
-  resources :products
-  resources :categories
   resources :products do
     resources :categories
   end
