@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20171002134424) do
 
+  create_table "catagories", force: :cascade do |t|
+    t.string "catagory_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "guests", force: :cascade do |t|
     t.string "name"
     t.string "api_token"
@@ -23,6 +29,19 @@ ActiveRecord::Schema.define(version: 20171002134424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["api_token"], name: "index_guests_on_api_token", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_name"
+    t.string "sku"
+    t.integer "price"
+    t.integer "year"
+    t.boolean "availabilty"
+    t.integer "quantity"
+    t.string "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
   end
 
   create_table "users", force: :cascade do |t|
