@@ -14,7 +14,13 @@ class LineItemsController < ApplicationController
 
   # GET /line_items/new
   def new
-    @line_item = LineItem.new
+    @line_item = LineItem.new(
+      cart: Cart.new,
+      product_id: params[:product_id],
+      quantity: params[:quantity]
+    )
+    @line_item.save
+    render json: @line_item
   end
 
   # GET /line_items/1/edit
