@@ -61,6 +61,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
+    if @user.present?
+      render json: @user
+    else
+      render json: ["error meat suit!"]
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

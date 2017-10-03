@@ -7,6 +7,11 @@ class CartsController < ApplicationController
     @carts = find_or_create_cart
   end
 
+  def checkout
+    @cart = find_or_create_cart
+    @cart.line_items.product = @line_items.product_id
+  end
+
   # GET /carts/1
   # GET /carts/1.json
   # def show
@@ -61,12 +66,6 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def add
-    @line_items = Line_items.find(params[:line_items_id])
-    @products.quantity = @products.quantity - @line_items.quantity if @carts.purchase?
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
