@@ -3,9 +3,8 @@ class CartsController < ApplicationController
 
   # GET /carts
   # GET /carts.json
-  def index
-    @carts = find_or_create_cart
-  end
+  # def index
+  # end
 
   def checkout
     @cart = find_or_create_cart
@@ -14,8 +13,11 @@ class CartsController < ApplicationController
 
   # GET /carts/1
   # GET /carts/1.json
-  # def show
-  # end
+  # NOTE: Maybe this works
+  def show
+    @cart = Cart.find_or_create_by(cart: params[:cart_id])
+    render json: @cart, include: "line_items.quanity"
+  end
 
   # GET /carts/new
   def new
