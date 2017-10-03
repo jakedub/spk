@@ -9,7 +9,6 @@ require 'csv'
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'IronGloryInventory.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-product.cart_id = 1
 csv.each do |row|
   @product = row.to_hash
   t = Product.new
