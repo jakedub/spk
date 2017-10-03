@@ -5,10 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'csv'
+
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'IronGloryInventory.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-CSV.foreach(csv_file_path) do |row|
-  Product.create!({
-
-    })
+csv.each do |row|
+  # @product = row.to_hash
+  t = Product.new
+  t.product_name = row['Product']
+  t.sku = row['SKU']
+  t.price = row['Price']
+  t.year = row['Year']
+  t.quantity = row['Available'].gsub(/\:|\D/, '')
+  t.size = row['Available'].gsub(/\:|\d/, '')
+  t.category = row['Category']
+  t.description = row['Description']
+  t.save
+end
