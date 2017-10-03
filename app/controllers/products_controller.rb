@@ -61,6 +61,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  # NOTE: need to be able to deduct the quantity purchased against the quantity of the product
+
+  def purchase
+    @product = Product.find(params[:id])
+    @carts.toggle(:purchase)
+    if @product.purchase
+      @product.quantity - @cart.quantity
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

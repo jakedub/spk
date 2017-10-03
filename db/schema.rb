@@ -10,17 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003144616) do
+ActiveRecord::Schema.define(version: 20171003190233) do
 
   create_table "carts", force: :cascade do |t|
     t.boolean "purchase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "guest_id"
-    t.integer "product_id"
-    t.index ["guest_id"], name: "index_carts_on_guest_id"
-    t.index ["product_id"], name: "index_carts_on_product_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -43,6 +39,14 @@ ActiveRecord::Schema.define(version: 20171003144616) do
     t.index ["api_token"], name: "index_guests_on_api_token", unique: true
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "product_name"
     t.string "sku"
@@ -54,13 +58,7 @@ ActiveRecord::Schema.define(version: 20171003144616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
-    t.integer "user_id"
-    t.integer "guest_id"
-    t.integer "category_id"
     t.string "category"
-    t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["guest_id"], name: "index_products_on_guest_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
