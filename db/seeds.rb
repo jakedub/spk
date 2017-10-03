@@ -11,7 +11,7 @@ require 'csv'
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'IronGloryInventory.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  @product = row.to_hash
+  # @product = row.to_hash
   t = Product.new
   t.product_name = row['Product']
   t.sku = row['SKU']
@@ -19,7 +19,7 @@ csv.each do |row|
   t.year = row['Year']
   t.quantity = row['Available'].gsub(/\:|\D/, '')
   t.size = row['Available'].gsub(/\:|\d/, '')
-  t.category_name = row['Category']
+  t.category = row['Category']
   t.description = row['Description']
   t.save
 end
