@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @carts = find_or_create_cart
   end
 
   # GET /carts/1
@@ -25,6 +25,7 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
+    @cart.user = current_user
 
     respond_to do |format|
       if @cart.save
@@ -62,10 +63,8 @@ class CartsController < ApplicationController
   end
 
   def add
-    @cart = Cart.find(params[:id])
-    @cart.toggle(:purchase)
-    @cart.save
-    redirect_to @cart.product
+    @line_items = Line_items.find(params[:line_items_id])
+    @products.quantity = @products.quantity - @line_items.quantity if @carts.purchase?
   end
 
 
