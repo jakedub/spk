@@ -12,4 +12,10 @@ class User < ApplicationRecord
 
   has_many :products
   belongs_to :cart
+
+  private
+
+  def downcase_email
+    email.downcase if email
+  end
 end
