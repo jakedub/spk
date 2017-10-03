@@ -9,8 +9,8 @@ class GuestsController < ApplicationController
 
   # GET /guests/1
   # GET /guests/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /guests/new
   def new
@@ -18,8 +18,8 @@ class GuestsController < ApplicationController
   end
 
   # GET /guests/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /guests
   # POST /guests.json

@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /users/new
   def new
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /users
   # POST /users.json
@@ -28,8 +28,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to :root, notice: 'User was successfully created.' }
+        format.json { redirect_to :root, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :confirmation_password, :api_token, :address, :city, :state, :postal_code)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :api_token, :address, :city, :state, :postal_code)
     end
 end
