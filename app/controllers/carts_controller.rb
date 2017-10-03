@@ -23,19 +23,19 @@ class CartsController < ApplicationController
 
   # POST /carts
   # POST /carts.json
-  def create
-    @cart = Cart.new(cart_params)
-
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def create
+  #   @cart = Cart.new(cart_params)
+  #
+  #   respond_to do |format|
+  #     if @cart.save
+  #       format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+  #       format.json { render :show, status: :created, location: @cart }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @cart.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
@@ -60,6 +60,14 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add
+    @cart = Cart.find(params[:id])
+    @cart.toggle(:purchase)
+    @cart.save
+    redirect_to @cart.product
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

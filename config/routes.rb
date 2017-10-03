@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'products#index'
   resources :carts
+
+  get '/carts/products/:id' => 'carts#add', as: :add
   resources :guests
   resources :users
   resources :products do
