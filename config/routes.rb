@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   get '/carts/products/:id' => 'carts#add', as: :add
   resources :guests
   resources :users
-  resources :products do
-    resources :categories
-  end
+  resources :products 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
