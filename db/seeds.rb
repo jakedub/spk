@@ -21,6 +21,5 @@ csv.each do |row|
   t.size = row['Available'].gsub(/\:|\d/, '')
   t.category = row['Category']
   t.description = row['Description']
-  # t.save
-  puts "#{t.product_name}, #{t.year}, #{t.size} "
+  # puts "#{t.product_name}, #{t.year}, #{t.size} "
 end
