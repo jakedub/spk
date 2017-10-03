@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 require 'csv'
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'IronGloryInventory.csv'))
@@ -21,5 +20,6 @@ csv.each do |row|
   t.size = row['Available'].gsub(/\:|\d/, '')
   t.category = row['Category']
   t.description = row['Description']
-  # puts "#{t.product_name}, #{t.year}, #{t.size} "
+  t.save
+  puts "#{t.product_name}, #{t.year}, #{t.size}, #{t.category} "
 end

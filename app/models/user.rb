@@ -11,8 +11,7 @@ class User < ApplicationRecord
   validates :state, length: { minimum: 2 }, presence: true
   validates :postal_code, length: { minimum: 5 }, presence: true
 
-  has_many :products
-  belongs_to :cart
+  has_many :carts
 
   private
 

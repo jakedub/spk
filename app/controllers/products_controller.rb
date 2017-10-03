@@ -23,19 +23,19 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
-  # def create
-  #   @product = Product.new(product_params)
-  #
-  #   respond_to do |format|
-  #     if @product.save
-  #       format.html { redirect_to @product, notice: 'Product was successfully created.' }
-  #       format.json { render :show, status: :created, location: @product }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @product.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def create
+    @product = Product.new(product_params)
+
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
@@ -58,6 +58,16 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # NOTE: need to be able to deduct the quantity purchased against the quantity of the product
+
+  def purchase
+    @product = Product.find(params[:id])
+    @carts.toggle(:purchase)
+    if @product.purchase
+      @product.quantity - @cart.quantity
     end
   end
 
