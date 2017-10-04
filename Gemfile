@@ -34,6 +34,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
 gem 'stripe'
 gem 'foreman', '~> 0.84.0'
+gem 'refile-postgres', '~> 1.4'
+gem "refile", require: "refile/rails", github: 'refile/refile'
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+gem 'sinatra', github: 'sinatra/sinatra', branch: 'master'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
