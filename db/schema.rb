@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004171901) do
+ActiveRecord::Schema.define(version: 20171004225850) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
     t.boolean "purchase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171004171901) do
 
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "product_id"
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_line_items_on_product_id"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 20171004171901) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "category"
-    t.string "image"
+    t.string "patch_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,4 +80,6 @@ ActiveRecord::Schema.define(version: 20171004171901) do
     t.index ["api_token"], name: "index_users_on_api_token", unique: true
   end
 
+  add_foreign_key "carts", "users"
+  add_foreign_key "line_items", "products"
 end

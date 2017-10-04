@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   paginates_per 10
-  attachment :image
+  attachment :patch
   has_many :line_items
 
 end
