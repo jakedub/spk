@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20171004171901) do
+=======
 ActiveRecord::Schema.define(version: 20171003190233) do
+>>>>>>> 1782f01d223685be05e1f8e0bb30c8fc7a82d82a
 
   create_table "carts", force: :cascade do |t|
     t.boolean "purchase"
@@ -20,8 +24,8 @@ ActiveRecord::Schema.define(version: 20171003190233) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-  create_table "catagories", force: :cascade do |t|
-    t.string "catagory_name"
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,6 +63,10 @@ ActiveRecord::Schema.define(version: 20171003190233) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "category"
+<<<<<<< HEAD
+    t.string "image"
+=======
+>>>>>>> 1782f01d223685be05e1f8e0bb30c8fc7a82d82a
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,12 +14,18 @@ csv.each do |row|
   t = Product.new
   t.product_name = row['Product']
   t.sku = row['SKU']
-  t.price = row['Price']
+  t.price = row['Price'].gsub(/\D+/, '').to_i * 100
   t.year = row['Year']
   t.quantity = row['Available'].gsub(/\:|\D/, '')
   t.size = row['Available'].gsub(/\:|\d/, '')
   t.category = row['Category']
   t.description = row['Description']
+<<<<<<< HEAD
+  t.image = File.open(Rails.root + "db/pictures/#{row[:SKU]}.png", "rb")
+  t.save
+  # puts "#{t.product_name}, #{t.year}, #{t.size}, #{t.category}, #t{t.image} "
+=======
   t.save
   puts "#{t.product_name}, #{t.year}, #{t.size}, #{t.category} "
+>>>>>>> 1782f01d223685be05e1f8e0bb30c8fc7a82d82a
 end
