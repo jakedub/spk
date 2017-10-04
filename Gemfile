@@ -36,6 +36,7 @@ gem 'stripe'
 gem 'foreman', '~> 0.84.0'
 gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
+# gem "paperclip", "~> 5.0.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
