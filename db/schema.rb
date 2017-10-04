@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20171004171901) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carts", force: :cascade do |t|
     t.boolean "purchase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171004171901) do
 
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "product_id"
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_line_items_on_product_id"
@@ -77,4 +80,6 @@ ActiveRecord::Schema.define(version: 20171004171901) do
     t.index ["api_token"], name: "index_users_on_api_token", unique: true
   end
 
+  add_foreign_key "carts", "users"
+  add_foreign_key "line_items", "products"
 end
