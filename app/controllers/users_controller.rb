@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token
   # GET /users
   # GET /users.json
   def index
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
     if @user.present?
-      render json: @user
+      redirect_to :back
     else
       render json: ["error meat suit!"]
     end
