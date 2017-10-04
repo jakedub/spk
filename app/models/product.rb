@@ -1,8 +1,6 @@
 class Product < ApplicationRecord
   paginates_per 10
+  attachment :image
+  has_many :line_items
 
-  has_many :categories
-  belongs_to :user
-  belongs_to :guest
-  belongs_to :cart
 end

@@ -3,14 +3,21 @@ class CartsController < ApplicationController
 
   # GET /carts
   # GET /carts.json
-  def index
-    @carts = Cart.all
+  # def index
+  # end
+
+  def checkout
+    @cart = find_or_create_cart
+    @cart.line_items.product = @line_items.product_id
   end
 
   # GET /carts/1
   # GET /carts/1.json
-  # def show
-  # end
+  # NOTE: Maybe this works
+  def show
+    @cart = Cart.find_or_create_by(cart: params[:cart_id])
+    render json: @cart, include: "line_items.quanity"
+  end
 
   # GET /carts/new
   def new
@@ -23,19 +30,20 @@ class CartsController < ApplicationController
 
   # POST /carts
   # POST /carts.json
-  # def create
-  #   @cart = Cart.new(cart_params)
-  #
-  #   respond_to do |format|
-  #     if @cart.save
-  #       format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-  #       format.json { render :show, status: :created, location: @cart }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @cart.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def create
+    @cart = Cart.new(cart_params)
+    @cart.user = current_user
+
+    respond_to do |format|
+      if @cart.save
+        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        format.json { render :show, status: :created, location: @cart }
+      else
+        format.html { render :new }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
@@ -60,14 +68,6 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def add
-    @cart = Cart.find(params[:id])
-    @cart.toggle(:purchase)
-    @cart.save
-    redirect_to @cart.product
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
