@@ -45,7 +45,6 @@ end
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
-    @line_item = LineItem.find(params[:id])
     @line_item.quantity = params[:quantity]
     @line_item.save
     render json: @line_item
