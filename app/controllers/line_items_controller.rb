@@ -26,7 +26,7 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.new(
       cart: Cart.new,
       product_id: params[:product_id],
-      quantity: params [:quantity]
+      quantity: params[:quantity]
 
     )
     @line_item.save
