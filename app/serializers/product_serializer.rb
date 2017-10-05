@@ -1,8 +1,6 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id :image
+  attributes :id :patch
 
-def image
-  Refile.attachment_url(object, :image, format: "png")
-end
-
+def patch
+  Refile.attachment_url(object, :patch, format: "png")
 end
