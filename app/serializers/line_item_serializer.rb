@@ -1,5 +1,5 @@
 class LineItemSerializer < ActiveModel::Serializer
-  attributes :id :quantity :product_id
+  attributes :id, :quantity, :product_id
 
   has_one :cart
   has_many :products
