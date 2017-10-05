@@ -20,7 +20,7 @@ csv.each do |row|
   t.size = row['Available'].gsub(/\:|\d/, '')
   t.category = row['Category']
   t.description = row['Description']
-  t.image = File.open(Rails.root + "db/pictures/#{row[:SKU]}.png", "rb")
+  # t.image = File.open(Rails.root + "db/pictures/#{row[:SKU]}.png", "rb")
   t.save
-  # puts "#{t.product_name}, #{t.year}, #{t.size}, #{t.category}, #t{t.image} "
+  puts "#{t.product_name}, #{t.year}, #{t.size}, #{t.category} "
 end
