@@ -38,6 +38,8 @@ gem 'refile-postgres', '~> 1.4'
 gem "refile", require: "refile/rails", github: 'refile/refile'
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 gem 'sinatra', github: 'sinatra/sinatra', branch: 'master'
+gem 'active_model_serializers', '~> 0.10.0'
+# gem "paperclip", "~> 5.0.0"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
