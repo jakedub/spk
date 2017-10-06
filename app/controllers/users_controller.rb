@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
     if @user.present?
-      redirect_to :back
+      redirect_to :root 
     else
       render json: ["error meat suit!"]
     end

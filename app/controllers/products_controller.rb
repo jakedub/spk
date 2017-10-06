@@ -8,11 +8,10 @@ class ProductsController < ApplicationController
     render json: @products
   end
 
-  # GET /products/1
+  # GET /products/1x
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
-    render json: @products
+    render json: @product
   end
 
   # GET /products/new
