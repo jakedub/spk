@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if @user.save!
       redirect_to :root
     else
-      render json: @user.errors
+      render json: ["error meat suit!"]
     end
   end
 
