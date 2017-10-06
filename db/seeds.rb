@@ -22,5 +22,5 @@ csv.each do |row|
   t.description = row['Description']
   t.patch = File.open(Rails.root.join( "db/pictures/#{row['SKU'].downcase}.png"), "rb")
   t.save
-  puts "#{t.product_name}, #{t.year}, #{t.size}, #{t.category} "
+#   puts "#{t.product_name}, #{t.year}, #{t.size}, #{t.category} "
 end
