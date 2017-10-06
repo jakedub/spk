@@ -7,8 +7,9 @@ class CartsController < ApplicationController
   # end
 
   def checkout
-    @cart = find_or_create_cart
-    @cart.line_items.product = @line_items.product_id
+        @current_cart = @cart
+        @current_cart = @current_cart.line_items.new(line_item_params)
+        @current_cart.save
   end
 
   # GET /carts/1

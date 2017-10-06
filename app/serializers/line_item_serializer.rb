@@ -1,9 +1,9 @@
-class LineItemSerializer < ActiveModel::Serializer
-  attributes :id :quantity :product_id
-
-  has_one :cart
-  has_many :products
-end
+# class LineItemSerializer < ActiveModel::Serializer
+#   attributes :id :quantity :product_id
+#
+#   has_one :cart
+#   has_many :products
+# end
 
 
 # class LineItemSerializer < ActiveModel::Serializer
